@@ -88,15 +88,3 @@ The script generates a local HTML file (e.g., `sec_report_YYYY-MM-DD.html`).
 MIT License.
 
 ```
-
-***
-
-**Key Improvements Made:**
-* **Consolidated Headers:** Merged the "What filings does it pull?" into a "Core Features" bullet list for faster reading.
-* **Streamlined Setup:** Grouped Installation, User-Agent, and CSV creation under a single "Setup" hierarchy.
-* **Clarified User-Agent:** Explicitly marked it as "(Required)" rather than "recommended" to ensure users don't face 403 errors.
-* **Cleaner Usage:** Grouped commands logically with bold labels rather than separate H2s for every command.
-
-Would you like me to generate a `requirements.txt` file to go along with this?
-
-```
