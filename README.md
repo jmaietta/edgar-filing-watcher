@@ -1,105 +1,106 @@
-````md
+Here is a tighter, more professional version of the README. It condenses the setup steps and organizes the usage examples for better scannability.
+
+---
+
+```markdown
 # edgar-filing-watcher
 
-Local Python tool that scans the SEC EDGAR daily index for a list of tickers and generates a local HTML summary report.
+A local Python tool that scans the SEC EDGAR daily index for specific tickers and generates a clean HTML summary report.
 
-## What filings does it pull?
+### Core Features
+* **Targeted Scanning:** Filters daily indices for a user-defined list of tickers.
+* **Form Support:** Defaults to `8-K`, `8-K/A`, `DEF 14A`, and `DEFA14A`.
+* **Smart Extraction:** Automatically extracts and highlights specific **Item** sections for 8-K filings (proxy filings are listed without snippets).
 
-By default, this script filters the SEC daily index for these form types:
+## Setup
 
-- 8-K
-- 8-K/A
-- DEF 14A
-- DEFA14A
-
-**Note:** The script extracts and highlights **Item sections only for 8-K / 8-K/A**.  
-Proxy filings (DEF 14A / DEFA14A) will still appear in the report, but without item snippets.
-
-## Requirements
-
-- Python 3
-- Internet connection
-- `requests` (installed via `requirements.txt`)
-
-## Install
-
-Run:
+### 1. Installation
+Requires Python 3. Install dependencies via `requirements.txt`:
 
 ```bash
 python3 -m pip install -r requirements.txt
-````
 
-## SEC User-Agent (recommended)
+```
 
-The U.S. Securities and Exchange Commission requests automated scripts identify themselves with contact info in the `User-Agent` header.
+### 2. Configure SEC User-Agent (Required)
 
-Before running, set this in your terminal:
+To comply with SEC automated access guidelines, you must identify your script. Set the `SEC_USER_AGENT` environment variable in your terminal before running:
 
 ```bash
 export SEC_USER_AGENT="edgar-filing-watcher (your-email@example.com)"
+
 ```
 
-This is **not stored in the repo** — each user sets it locally on their own machine.
+### 3. Create Ticker List
 
-## Create your ticker list
-
-Create a CSV file (example name: `tickers.csv`) with a `Ticker` column:
+Create a CSV file (e.g., `tickers.csv`) containing a single column named `Ticker`:
 
 ```csv
 Ticker
 AAPL
 MSFT
 DLTR
+
 ```
 
-## Run
+## Usage
 
-Basic run (uses the most recent available day, and looks back a few days if needed):
+**Basic Run**
+Scans the most recent available day (with automatic look-back).
 
 ```bash
 python3 sec_notifications.py --tickers-csv tickers.csv
+
 ```
 
-Run a specific date:
+**Specific Date**
 
 ```bash
 python3 sec_notifications.py --tickers-csv tickers.csv --date 2026-02-01
+
 ```
 
-Only scan 8-K / 8-K/A:
+**Filter by Form Type**
 
 ```bash
 python3 sec_notifications.py --tickers-csv tickers.csv --forms "8-K,8-K/A"
+
 ```
 
-See all options:
+**View All Options**
 
 ```bash
 python3 sec_notifications.py -h
+
 ```
 
 ## Output
 
-The script generates an HTML file named like:
+The script generates a local HTML file (e.g., `sec_report_YYYY-MM-DD.html`).
 
-* `sec_report_YYYY-MM-DD.html`
+* **Linux/Mac:** `open sec_report_2026-02-01.html` or `xdg-open ...`
+* **Windows:** Double-click the file to open in your browser.
 
-Open it (Linux):
+## Disclaimer
 
-```bash
-xdg-open sec_report_YYYY-MM-DD.html
-```
-
-## Notes
-
-* Item extraction is heuristic and may miss some items depending on filing formatting.
-* Please be respectful with request volume when querying SEC endpoints.
-* Not affiliated with the SEC.
+* Item extraction is heuristic and may vary based on filing formatting.
+* Please respect SEC request rate limits.
+* This tool is not affiliated with the U.S. Securities and Exchange Commission.
 
 ## License
 
-MIT License (see `LICENSE`).
+MIT License.
 
 ```
-::contentReference[oaicite:0]{index=0}
+
+***
+
+**Key Improvements Made:**
+* **Consolidated Headers:** Merged the "What filings does it pull?" into a "Core Features" bullet list for faster reading.
+* **Streamlined Setup:** Grouped Installation, User-Agent, and CSV creation under a single "Setup" hierarchy.
+* **Clarified User-Agent:** Explicitly marked it as "(Required)" rather than "recommended" to ensure users don't face 403 errors.
+* **Cleaner Usage:** Grouped commands logically with bold labels rather than separate H2s for every command.
+
+Would you like me to generate a `requirements.txt` file to go along with this?
+
 ```
