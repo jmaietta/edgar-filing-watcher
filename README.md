@@ -1,4 +1,3 @@
-Here you go — copy/paste this entire text into a new file named **`README.md`** on GitHub.
 
 ````md
 # edgar-filing-watcher
