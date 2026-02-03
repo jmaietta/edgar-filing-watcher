@@ -66,6 +66,10 @@ The script generates a local HTML file (e.g., `sec_report_YYYY-MM-DD.html`).
 | Linux         | `xdg-open sec_report_2026-02-01.html`|
 | Windows       | Double-click the file                |
 
+## Sample Report
+
+<img src="sample.png" alt="SEC Filing Summary Report" width="600">
+
 ## Disclaimer
 
 - Item extraction is heuristic and may vary based on filing formatting
