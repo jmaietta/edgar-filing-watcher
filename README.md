@@ -1,7 +1,3 @@
-Here is a tighter, more professional version of the README. It condenses the setup steps and organizes the usage examples for better scannability.
-
----
-
 ```markdown
 # edgar-filing-watcher
 
